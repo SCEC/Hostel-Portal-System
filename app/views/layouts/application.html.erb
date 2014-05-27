@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hps</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>HPS</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<h1>Welcome to HPS </h1>
+<p><a href="/welcome/index">Index</a></p>
+<p><a href="/welcome/about">About</a></p>
+<p><a href="/welcome/contact">Contact</a></p>
 <%= yield %>
 
 </body>
