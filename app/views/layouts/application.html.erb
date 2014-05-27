@@ -2,29 +2,44 @@
 <html>
 <head>
   <title>HPS</title>
+  <link href='http://fonts.googleapis.com/css?family=Pacifico|Dancing+Script|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="font-family: 'Open Sans Condensed', sans-serif;">
 <div class="container-full">
 
       <div class="row">
        
         <div class="col-lg-12 text-center v-center" style="margin-top: 12%;">
+        	<h1 style="color: #FFF;font-weight: bolder;font-size: 80px; font-family: 'Dancing Script', cursive;">Stable Corps</h1>
+          	<h1 style="color: #FFF; font-size: 40px;">HPS</h1>
+          	<p class="lead" style="font-style: italic;">Welcome to Stable Corps Hostel Placement System</p>
           
-          <h1 style="color: #FFF;font-weight: bolder;font-size: 80px;">Stable Corps</h1>
-          <h1 style="color: #FFF; font-size: 40px;">HPS</h1>
-          <p class="lead">Welcome to Stable Corps HPS</p>
+          	<br><br>
           
-          <br><br><br>
-          
-          <form class="col-lg-12">
+          	<script type="text/javascript">var submitted=false;</script>
+          	<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='';}"></iframe>
+
+			<form action="https://docs.google.com/forms/d/1sGRxEdeKlXEzPAosH-Jj_s6cv9b3RLFtLueGhIuHa_8/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;" class="col-lg-12">
+				<div class="input-group" style="width:340px;text-align:center;margin:0 auto;">					<input type="email" name="entry.347984871" value="" id="entry_347984871" dir="auto" aria-label=" Email Must be a valid email address" aria-required="true" required="true" title="Don't worry. We hate spam, and will not share your email with anyone." placeholder="Enter your email address" class="form-control input-lg">
+					<span class="input-group-btn">
+						<button type="submit" name="submit" value="Submit" id="ss-submit" class="btn btn-lg btn-primary">OK</button>
+					<!-- <button class="btn btn-lg btn-primary" type="button">OK</button> -->
+					</span>
+            	</div>
+
+					
+			</form>
+
+
+          <!-- <form class="col-lg-12">
             <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
             <input class="form-control input-lg" title="Don't worry. We hate spam, and will not share your email with anyone." placeholder="Enter your email address" type="text">
               <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span>
             </div>
-          </form>
+          </form> -->
         </div>
         
       </div> <!-- /row -->
@@ -79,7 +94,7 @@
 	<div class="row">
         <div class="col-lg-12">
         <br><br>
-          <p class="pull-right">www.stablecorps.com<a href="">stablecorps.com</a> &nbsp; ©Copyright 2014 STCs-HPS<sup></sup></p>
+          <p class="pull-right"><a href="www.stablecorps.com">stablecorps.com</a> &nbsp; ©Copyright 2014 STCs-HPS<sup></sup></p>
         <br><br>
         </div>
     </div>
