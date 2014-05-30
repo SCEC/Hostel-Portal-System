@@ -35,7 +35,7 @@ end
 # my gems
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
-
+gem 'faker'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
