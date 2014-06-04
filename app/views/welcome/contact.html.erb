@@ -1,2 +1,81 @@
-<h1>Welcome#contact</h1>
-<p>Find me in app/views/welcome/contact.html.erb</p>
+<style type="text/css">
+.contact {
+    background-color: rgba(255,255,255,0.64);
+    padding: 13px 10px;
+    border: 0.01em dashed rgba(114, 111, 228, 0.9);
+}
+	.contact input{}
+	.contact input[type="text"]{}
+	.contact input[type="email"]{}
+
+.contact input[type="text"], .contact input[type="email"] {
+    width: 250px;
+    margin-bottom: 10px;
+    padding: 5px 12px;
+}
+
+.contact input[type="submit"] {
+    cursor: pointer;
+    border-radius: 1px;
+    background: rgba(144,144,144,1);
+    text-shadow: none;
+}
+
+	.contact textarea{
+		width: 352px; 
+		height: 222px; 
+		resize: none;
+		margin-bottom: 10px;
+	}
+
+	.contact-icon {}
+
+.contact-icon div {
+    margin-bottom: 10px;
+}
+
+.contact-icon div i {
+    font-size: 20px;
+    color: #fff;
+    background-color: #000;
+    border-radius: 30px;
+    padding: 8px;
+    width: 35px;
+    text-align: center;
+    margin-right: 10px;
+}
+</style>
+<div class="container">
+	<h1>Drop us a message at STCs/HPS</h1>
+	<div class="row">
+		<div class="col-lg-7">
+			<div class="contact">
+				<input type="text" placeholder="Full Name" required="true"><br/>
+				<input type="email" placeholder="Email" required="true"><br/>
+				<input type="text" placeholder="Subject" required="true"><br/>
+				<textarea>
+					
+				</textarea><br/>
+				<input type="submit" value="Send Mail">
+			</div>
+		</div>
+		<div class="col-lg-5">
+			<address>
+				<strong>Stable Corps</strong><br/>
+				P.O. Box KS 16999<br/>
+				Kumasi<br/>
+				<abbr title="Email">Email:</abbr> info@stablecorps.com<br/>
+				<abbr title="Phone">Tel:</abbr> (+233) 20 373-2946				 
+			</address>
+			<div class="contact-icon">
+				<div>
+					<a href="http://www.facebook.com/stablecorps" target="blank"><i class="fa fa-facebook"></i> Facebook</a>
+				</div>
+				<div>
+					<a href="https://plus.google.com/108558238395241676713/posts" target="blank">
+					<i class="fa fa-google-plus"></i> Google Plus</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

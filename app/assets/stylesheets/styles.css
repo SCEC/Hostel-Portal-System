@@ -28,6 +28,7 @@
 
 html,body {
   height:100%;
+  background: url('/assets/halftone.png');
 }
 
 h1 {
@@ -36,18 +37,44 @@ h1 {
   color:#DDCCEE;
 }
 
+  .navigation{}
+
+.navigation ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.navigation ul li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 15px 20px;
+}
+
+.navigation ul li a {
+    padding: 15px 20px;
+    color: #386788;
+    text-decoration: none;
+}
+
+.navigation ul li:hover{
+  background-color: rgba(0,0,0,0.1);
+  color: #000;
+}
+
 .lead {
 	color:#DDCCEE;
   margin-bottom: 0px;
 }
 
+.background{  
+  background-image: url('/assets/congruent_outline.png');
+}
 
 /* Custom container */
 .container-full {
   margin: 0 auto;
   width: 100%;
   min-height:100%;
-  background-image: url('/assets/congruent_outline.png');
   background-color:#FFF;
   color:#eee;
   overflow:hidden;

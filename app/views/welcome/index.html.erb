@@ -1,1 +1,131 @@
-Index page
+<style type="text/css">
+p.bjqs-caption {
+    top: 100px;
+    background: rgba(0,0,0,0.36);
+    position: absolute;
+    z-index: 99;
+    height: 20px;
+    color: #FFF;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    text-align: center;
+    font-size: 20px;
+    width: 50%;
+    margin: auto;
+    border-radius: 0px 5px 5px 0px;
+}
+
+
+</style>
+<div class="container-full">
+	<!--  Outer wrapper for presentation only, this can be anything you like -->
+	<div id="banner-fade">
+		<!-- start Basic Jquery Slider -->
+		<ul class="bjqs">
+		  <li><img src="/assets/banner01.jpg" title="Search For Hostels Online"></li>
+		  <li><img src="/assets/banner02.jpg" title="Use Maps to Look for location"></li>
+		  <li><img src="/assets/banner03.jpg" title="Compare and evaluate facilities"></li>
+		</ul>
+		<!-- end Basic jQuery Slider -->
+	</div>
+	<!-- End outer wrapper -->
+</div>
+<div class="container-full" style="background-color: rgba(0, 0, 0, 0.33); position: absolute; height: 761.063px; top: 50px;">
+  <div class="container">
+  	<script class="secret-source">
+        jQuery(document).ready(function($) {
+
+          $('#banner-fade').bjqs({
+            height      : 1080,
+            width       : 1920,
+            responsive  : true,
+            showcontrols : false, // show next and prev controls
+            showmarkers : false, // Show individual slide markers
+            // interaction values
+			keyboardnav : false, // enable keyboard navigation
+			hoverpause : false, // pause the slider on hover
+			
+			animduration : 650, // how fast the animation are
+			animspeed : 6600, // the delay between each slide
+          });
+
+        });
+      </script>
+
+    <div style="margin: 25% auto; width: 220px">
+      <input type="text" class="main-input" placeholder="Search Hostel or Apartment by name"/>
+      <p style="font-size: 20px; text-align: center; color: #000; text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);">Enter a hostel to see details.</p> 
+    </div>
+  </div>
+</div>
+<div class="container-full" style="background-color: white">
+  <div class="container">
+    <div class="hostels-classes">
+      <div class="hostel">
+        <div class="name">Hostel One</div>
+        <div class="pics"></div>
+        <div class="star"></div>
+      </div>
+      <div class="hostel">
+        <div class="name">Hostel Two</div>
+        <div class="pics"></div>
+        <div class="star"></div>
+      </div>
+      <div class="hostel">
+        <div class="name">Hostel Three</div>
+        <div class="pics"></div>
+        <div class="star"></div>
+      </div>
+      <div class="hostel">
+        <div class="name">Hostel Four</div>
+        <div class="pics"></div>
+        <div class="star"></div>
+      </div>
+      <div class="hostel">
+        <div class="name">Hostel Four</div>
+        <div class="pics"></div>
+        <div class="star"></div>
+      </div>
+      <div class="hostel">
+        <div class="add">
+          Register or Add your Hostel
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="clear: both"></div>
+<div class="container-full" style="background-color: rgba(0,0,234,0.5); min-height: 62%;">
+  <div class="map">
+    <div style="width: 300px; margin: 12% auto;">
+      <p>Use HPS maps to locate a hostel around you.</p>
+      <div class="button">
+        USE MAPS
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-full background">
+
+  <div class="row">
+   
+    <div class="col-lg-12 text-center v-center" style="margin-top: 12%;">
+    	<h1 style="color: #FFF;font-weight: bolder;font-size: 80px; font-family: 'Dancing Script', cursive;">Stable Corps</h1>
+      <h1 style="color: #FFF; font-size: 40px;">HPS</h1>
+      <p class="lead" style="font-style: italic;">Welcome to Stable Corps Hostel Placement System</p>
+      
+    </div>
+    
+  </div> <!-- /row -->
+  
+  <div class="row">
+   
+    <div class="col-lg-12 text-center v-center" style="font-size:39pt;">
+      <a href="#"><i class="icon-google-plus"></i></a> <a href="#"><i class="icon-facebook"></i></a>  <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-github"></i></a> <a href="#"><i class="icon-pinterest"></i></a>
+    </div>
+  
+  </div>
+  
+  <br><br><br><br><br>
+
+</div> <!-- /container full -->
