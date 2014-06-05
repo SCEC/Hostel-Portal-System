@@ -1,0 +1,36 @@
+<style type="text/css">
+/** User Login **/
+.login_form{
+	background-color: rgba(255,255,255,0.64);
+    padding: 13px 10px;
+    border: 0.01em dashed rgba(114, 111, 228, 0.9);
+}
+
+.login_form {
+    background-color: rgba(255, 255, 255, 0.64);
+    padding: 20px;
+    border: 0.01em solid rgba(0, 0, 0, 0.36);
+    border-radius: 4px;
+}
+
+	.login_form form input[type="text"]{}
+
+	.login_form form input[type="password"]{}
+
+.login_form form input[type="text"], 
+.login_form form input[type="password"],
+.login_form form input[type="email"] {}
+
+.login_form form input[type="submit"]{
+	
+}
+/** End of User Login **/
+</style>
+<div class="login_form">
+	<form>
+		<input type="text" name="username_email" placeholder="Enter Username or Email"><br/>
+		<input type="password" name="password" placeholder="Password"><br/>
+		<input type="submit" value="Sign In">
+		<%= link_to :Register, welcome_register_url %><br/>
+	</form>
+</div>

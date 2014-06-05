@@ -48,12 +48,16 @@ h1 {
     list-style-type: none;
     display: inline-block;
     padding: 15px 20px;
+    text-decoration: underline;
+    color: #386788;
+    font-weight: bold;
 }
 
 .navigation ul li a {
     padding: 15px 20px;
     color: #386788;
     text-decoration: none;
+    font-weight: 200;
 }
 
 .navigation ul li:hover{
@@ -89,3 +93,74 @@ h1 {
   margin-top:7%;
 }
   
+/** Forms **/
+form input[type="text"]{}
+
+form input[type="password"]{}
+
+form input[type="email"]{}
+
+form input[type="submit"]{
+  cursor: pointer;
+  border-radius: 1px;
+  background: rgba(144,144,144,1);
+  text-shadow: none;
+  margin-top: 15px;
+}
+
+form input[type="text"], form input[type="password"],
+form input[type="email"]{
+    width: 100%;
+    font-size: 13px;
+    padding: 11px 22px;
+    margin-top: 15px;
+}
+}
+
+/** Contact **/
+.contact {
+    background-color: rgba(255,255,255,0.64);
+    padding: 13px 10px;
+    border: 0.01em dashed rgba(114, 111, 228, 0.9);
+}
+.contact input{}
+.contact input[type="text"]{}
+.contact input[type="email"]{}
+.contact input[type="submit"]{}
+
+.contact input[type="text"], .contact input[type="email"] {
+    width: 250px;
+    margin-bottom: 10px;
+    padding: 5px 12px;
+}
+
+.contact input[type="submit"] {
+    cursor: pointer;
+    border-radius: 1px;
+    background: rgba(144,144,144,1);
+    text-shadow: none;
+}
+
+  .contact textarea{
+    width: 352px; 
+    height: 222px; 
+    resize: none;
+    margin-bottom: 10px;
+  }
+
+  .contact-icon {}
+
+.contact-icon div {
+    margin-bottom: 10px;
+}
+
+.contact-icon div i {
+    font-size: 20px;
+    color: #fff;
+    background-color: #000;
+    border-radius: 30px;
+    padding: 8px;
+    width: 35px;
+    text-align: center;
+    margin-right: 10px;
+}
