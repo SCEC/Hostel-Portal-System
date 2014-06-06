@@ -1,5 +1,118 @@
-<ul>
-	<li><%= link_to :Home, welcome_index_url %></li>
-	<li><%= link_to :logout, st_user_sessions_logout_url %></li>
-</ul>
-<%=yield%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HPS</title>
+  <!-- 
+  <link href='http://fonts.googleapis.com/css?family=Pacifico|Dancing+Script|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> 
+  -->
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="font-family: 'Open Sans Condensed', sans-serif;">
+<style type="text/css">
+	#st_user{}
+#st_user-notice {
+    background-color: #008C23;
+}
+
+#st_user-error {
+	background-color: #FF68A1;
+}
+
+#st_user-notice, #st_user-error {
+    color: #FFF;
+    font-weight: bold;
+    padding: 12px 0px;
+    text-align: center;
+}
+
+.st_user-nav {
+    background-color: rgba(0,0,0,0.67);
+    color: #fff;
+}
+
+.st_user-nav ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.st_user-nav ul li {
+    display: inline-block;
+}
+
+.st_user-nav ul li a {
+    color: #FFF;
+    text-decoration: none;
+    display: block;
+    padding: 12px 18px;
+}
+
+.st_user-nav ul li a:hover {
+    color: #18B941;
+}
+
+.st_user-search {
+    padding: 10px;
+    background: none repeat scroll 0% 0% #F5F5F5;
+    border-bottom: 1px solid #CCC;
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+</style>
+
+<% if flash[:login_notice] %>
+	<div id="st_user-notice"><%= flash[:login_notice] %></div>
+<% end %>
+<% if flash[:notice] %>
+	<div id="st_user-notice"><%= flash[:notice] %></div>
+<% end %>
+<% if flash[:error] %>
+	<div id="st_user-error"><%= flash[:error] %></div>
+<% end %>
+
+
+
+<div class="st_user-nav">
+	<div class="container">
+		<ul class="right">
+			<li><%= link_to :Home, welcome_index_url %></li>
+			<li><a><i class="fa fa-user" style="font-size: 18px; background-color: #808080; text-align: center; margin-right: 5px; padding: 5px; border-radius: 3px;"></i><%= @current_user.username %></a></li>
+			<li><%= link_to :logout, st_user_sessions_logout_url %></li>
+		</ul>
+	</div>
+</div>
+<div class="st_user-search">
+	<div class="container">
+		<select style="width: 102px; text-align: center;">
+			<option>All</option>
+			<option>Places</option>
+			<option>Facilities</option>
+		</select>
+		<input class="right" type="text" style="padding: 6px 12px;"></input>
+	</div>
+
+</div>
+<style type="text/css">
+	.st_user-current-user{
+		background: url('/assets/bg-user-homepage.png');
+	}
+
+.st_user-current-user h4 {
+    font-size: 15px;
+    text-transform: capitalize;
+    text-shadow: 2px 2px 3px rgba(255,255,255,1);
+}
+</style>
+<div class="st_user-current-user">
+	<div class="container">
+		<h4><%= @current_user.firstName %> <%= @current_user.lastname %></h4>
+	</div>
+</div>
+<div class="container">
+
+	
+	<%=yield%>
+</div>
+</body>
+</html>
