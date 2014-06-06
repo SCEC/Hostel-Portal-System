@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
 
 	protected
 		def authenticate_user
-			if session[:user_id]
+			if session[:st_user_id]
 				# set current user object to @current_user object variable
-				@current_user = Student.find session[:user_id]
+				@current_user = Student.find session[:st_user_id]
 				return true	
 			else
 				redirect_to(:controller => :welcome, :action => :login)
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 		end
 		
 		def save_login_state
-			if session[:user_id]
+			if session[:st_user_id]
 				redirect_to(:controller => :st_user_sessions, :action => :home)
 				return false
 			else

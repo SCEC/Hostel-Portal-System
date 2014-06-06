@@ -7,7 +7,7 @@ class StUserSessionsController < ApplicationController
 	end
 
 	def logout
-		session[:user_id] = nil
+		session[:st_user_id] = nil
 		redirect_to :controller => :welcome, :action => :login
 	end
 
@@ -22,9 +22,10 @@ class StUserSessionsController < ApplicationController
 
 	def login_attempt
 		authorized_user = Student.authenticate(params[:username_or_email],params[:login_password])
+
 		if authorized_user
-			session[:user_id] = authorized_user.id
-			flash[:login_notice] = "Wow Welcome again, you logged in as #{authorized_user.username}"
+			session[:st_user_id] = authorized_user.id
+			flash[:login_notice] = "Wow Welcome again, you last logged in as #{authorized_user.username}"
 			redirect_to(:action => 'home')
 		else
 			flash[:login_notice] = "Invalid Username or Password"
