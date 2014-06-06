@@ -59,6 +59,36 @@
     box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
 }
 
+.st_user-nav ul li.dropdown{
+	color: rgba(0,0,0,0.8);
+}
+
+.st_user-nav ul li.dropdown a:hover {
+    color: #fff;
+}
+
+.st_user-nav ul li.dropdown ul {
+    border-radius: 0px;
+    background-color: #F5F5F5;
+}
+
+.st_user-nav ul li.dropdown ul li {
+    padding: 5px 15px;
+    display: block;
+}
+
+.st_user-nav ul li.dropdown ul li a {
+    color: #000;
+    display: inline-block;
+    padding: 0px;
+    margin-left: 8px;
+}
+
+.st_user-nav ul li.dropdown ul li a:hover {
+    color: #000;
+    background-color: #F5F5F5;
+    text-decoration: underline;
+}
 </style>
 
 <% if flash[:login_notice] %>
@@ -72,16 +102,27 @@
 <% end %>
 
 
-
+<!-- nav menu -->
 <div class="st_user-nav">
 	<div class="container">
+		<ul style="display: inline;">
+			<li><a>HPS</a></li>
+		</ul>
 		<ul class="right">
 			<li><%= link_to :Home, welcome_index_url %></li>
-			<li><a><i class="fa fa-user" style="font-size: 18px; background-color: #808080; text-align: center; margin-right: 5px; padding: 5px; border-radius: 3px;"></i><%= @current_user.username %></a></li>
-			<li><%= link_to :logout, st_user_sessions_logout_url %></li>
+			<li class="dropdown">
+				<a id="dLabel" role="button" data-toggle="dropdown" data-target="#"><i class="fa fa-user" style="font-size: 18px; background-color: #808080; text-align: center; margin-right: 5px; padding: 5px; border-radius: 3px;"></i><%= @current_user.username %> <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					<li><i role="presentation" class="fa fa-cogs fa-border fa-fw"></i><%= link_to :Settings, st_user_sessions_setting_path %></li>
+					<li class="divider" style="padding: 0px; margin: 1px;"></li>
+					<li><i class="fa fa-sign-out fa-border fa-fw"></i><%= link_to :logout, st_user_sessions_logout_url %></li>
+				</ul>
+			</li>			
 		</ul>
 	</div>
-</div>
+</div><!-- end of nav menu -->
+<!-- search menu -->
 <div class="st_user-search">
 	<div class="container">
 		<select style="width: 102px; text-align: center;">
@@ -89,10 +130,12 @@
 			<option>Places</option>
 			<option>Facilities</option>
 		</select>
-		<input class="right" type="text" style="padding: 6px 12px;"></input>
+		<div class="input-group margin-bottom-sm right" style="width: 200px;">
+		  <input class="form-control" type="text" style="padding: 6px 12px;">
+		  <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+		</div>
 	</div>
-
-</div>
+</div><!-- end of search menu -->
 <style type="text/css">
 	.st_user-current-user{
 		background: url('/assets/bg-user-homepage.png');
