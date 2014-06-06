@@ -20,17 +20,22 @@
 .login_form form input[type="text"], 
 .login_form form input[type="password"],
 .login_form form input[type="email"] {}
-
-.login_form form input[type="submit"]{
-	
-}
+s 
 /** End of User Login **/
 </style>
 <div class="login_form">
-	<form>
-		<input type="text" name="username_email" placeholder="Enter Username or Email"><br/>
-		<input type="password" name="password" placeholder="Password"><br/>
-		<input type="submit" value="Sign In">
-		<%= link_to :Register, welcome_register_url %><br/>
+	<form role="form">
+		<fieldset>
+			<div class="form-group">
+				<input type="text" name="username_email"   placeholder="Enter Username or Email" ><br/>
+				<input type="password" name="password" placeholder="Password"><br/>
+				 <div class="checkbox">
+                         <label>
+                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                        </label> <br/>
+				<input type="submit" value="Sign In" >
+				<%= link_to :Register, welcome_register_url %><br/>
+			</div>
+		 </fieldset>
 	</form>
 </div>

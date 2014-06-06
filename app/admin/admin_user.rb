@@ -24,5 +24,26 @@ ActiveAdmin.register AdminUser do
     end
     f.actions
   end
-
 end
+# placing the menu items uder 
+ActiveAdmin.register Hostel do
+  menu :parent => "AdminUser"
+end
+
+ActiveAdmin.register Student do
+  menu :parent => "AdminUser"
+end
+ActiveAdmin.register Facility do
+  menu :parent => "Hostel"
+end
+ActiveAdmin.register RoomCategory do
+  menu :parent => "Hostel"
+end
+ActiveAdmin.register RoomType do
+  menu :parent => "Hostel"
+end
+
+
+
+
+
