@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+
+  before_filter :save_login_state, :only => [:login]
   def index
   end
 
@@ -9,9 +11,7 @@ class WelcomeController < ApplicationController
   end
 
   def login
-  end
-
-  def register  	
+    @user = Student.new
   end
 
   def about

@@ -5,9 +5,20 @@ HPS::Application.routes.draw do
   get "welcome/contact"
   get "welcome/about"
   get "welcome/login"
-  get "welcome/register"
   get "welcome/faq"
   get "home/index"
+
+  # user controller routes
+  get "user/new"
+  post "user/create"
+  
+  # student user session controller routes
+  get "st_user_sessions/login"
+  get "st_user_sessions/logout"
+  get "st_user_sessions/home"
+  get "st_user_sessions/profile"
+  get "st_user_sessions/setting"
+  post "st_user_sessions/login_attempt"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

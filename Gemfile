@@ -36,6 +36,8 @@ end
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'faker'
+gem 'thin'
+gem 'bcrypt-ruby', :require => 'bcrypt'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

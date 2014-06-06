@@ -1,0 +1,2 @@
+module StUserSessionsHelper
+end

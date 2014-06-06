@@ -27,10 +27,13 @@
 /** End of User Login **/
 </style>
 <div class="login_form">
-	<form>
-		<input type="text" name="username_email" placeholder="Enter Username or Email"><br/>
-		<input type="password" name="password" placeholder="Password"><br/>
-		<input type="submit" value="Sign In">
-		<%= link_to :Register, welcome_register_url %><br/>
-	</form>
+	<%= form_tag(:controller => 'st_user_sessions', :action => 'login_attempt',) do %>
+		<%= text_field_tag :username_or_email, nil, :placeholder => "Username or Email" %><br/>
+		<%= password_field_tag :login_password, nil, :placeholder => "Password" %><br/>
+		<%= submit_tag("Log In") %>
+		<%= link_to :Register, user_new_url %><br/>
+	<% end %>
+	<% if flash[:login_notice] %>
+	<div id="notice"><%= flash[:login_notice] %></div>
+	<% end %>
 </div>
