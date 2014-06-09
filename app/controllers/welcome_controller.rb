@@ -26,13 +26,19 @@ class WelcomeController < ApplicationController
 
   end
 
-  def get_hostels_from_country
-    @hostels = Hostel.find_by_country_id(params[:country_id])
+  def get_hostel_from_country
+    @hostels = Hostel.find_all_by_country_id(params[:id])
     puts @hostels
+    respond_to do |format|
+      format.json  { render :json => @hostels }      
+    end
   end
 
   def find_hostel_from_id
-    ho
+    @hostels = Hostel.find(10)
+    respond_to do |format|
+      format.json  { render :json => @hostels }      
+    end
   end
 
   def hostels

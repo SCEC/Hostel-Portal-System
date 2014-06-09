@@ -23,7 +23,9 @@
 				<div class="col-lg-2">
 					Country: <br/>
 					<%= collection_select nil, :country_id, @countries, :id, :name, {:prompt => "Select Country"}, {:id => 'country_select'} %><br/>
-					<%= collection_select(nil, :hostel_id, @hostels, :id, :name_of_hostel, {:prompt => "Select a Hostel"}, {:id => 'hostel_select'}) %>
+					<select id="hostel_select">
+						<option>Choose country from above</option>
+					</select>
 				</div>
 				<div class="col-lg-10">
 					<div class="cities">
@@ -55,18 +57,62 @@
 	});
 </script>
 <script>
-// $(document).ready(function() {
-	$('#country_select').change(function() {
-		var value = $('#country_select').val();
 
-		$.ajax({
-			url: "http://"+location.host+"welcome/get_hostels_from_country/"+value,
-			data: {
-				country_id : value
-			},
-			dataType: "script"
-		});
-	});
+// $(document).ready(function() {
+	function checkCountrySelectBox(){
+		var value = $('select#country_select').val();
+
+		if (value==""){
+			// if the id is empty remove all the sub_selection options from being selectable and do not do any ajax
+            $("select#hostel_select option").remove();
+            var row = "<option value=\"" + "" + "\">" + "Choose a country from above" + "</option>";
+            $(row).appendTo("select#hostel_select");
+		}else{
+			// Send the request and update sub category dropdown
+            $.ajax({
+                dataType: "json",
+                cache: false,
+                url: '/welcome/get_hostel_from_country/',
+                data: { id : value},
+                timeout: 3000,
+                beforeSend: function(){
+                	if ( console && console.log ) {
+						console.log("Message", "Disable hostel_select");
+					}
+                },
+                error: function(XMLHttpRequest, errorTextStatus, error){
+                    alert("Failed to load data : "+ errorTextStatus+" ;"+error);
+                },
+                success: function(data){                    
+                    // Clear all options from sub category select
+                    $("select#hostel_select option").remove();
+                    //put in a empty default line
+                    var row = "<option value=\"" + "" + "\">" + "Select a Hostel" + "</option>";
+                    $(row).appendTo("select#hostel_select");                        
+                    // Fill sub category select
+                    $.each(data, function(i, j){
+                        row = "<option value=\"" + j.id + "\">" + value + " " + j.name_of_hostel + "</option>";  
+                        $(row).appendTo("select#hostel_select");                    
+                    });            
+                },
+                complete: function(){
+                	if ( console && console.log ) {
+						console.log("Message", "Enable hostel_select");
+					}
+                }
+            });
+		}
+		// $.ajax({
+		// 	url: "http://"+location.host+"welcome/get_hostels_from_country/"+value,
+		// 	data: {
+		// 		country_id : value
+		// 	},
+		// 	dataType: "script"
+		// });
+	}
+
+	$('#country_select').change(checkCountrySelectBox);
+
 	$('#artists_select').change(function() {
 		$.ajax({
 			url: "http://"+location.host+"welcome/find_hostel_from_id",
