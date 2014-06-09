@@ -52,3 +52,6 @@ gem 'pg'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem "kaminari"#, "~> 0.13.0"
+gem 'rails_12factor', group: :production
+ruby '2.0.0'
