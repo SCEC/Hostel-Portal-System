@@ -28,11 +28,11 @@
 
 html,body {
   height:100%;
-  background: url('/assets/halftone.png');
+  /*background: url('/assets/halftone.png');*/
 }
 
 h1 {
-  font-family: Arial,sans-serif
+  font-family: Arial,sans-serif;
   font-size: 70px;
   color:#DDCCEE;
 }

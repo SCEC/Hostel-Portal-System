@@ -2,7 +2,7 @@ require 'faker'
 
 namespace :db do
   desc "Fill database with sample data"
-  task :populate => :environment do
+  task :populate_student => :environment do
     50.times do |n|
     	name  = Faker::Company.name
     	# firstName , lastname, username, email, contact

@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Country.create(:name=>:Ghana)
+Country.create(:name=>:Nigeria)
+# COUNTRIES  = YAML.load_file(Rails.root.join('config/country.yml'))
+# COUNTRIES.each do |country|
+# 	Country.create(country)
+# end

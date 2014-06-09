@@ -38,7 +38,8 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'faker'
 gem 'thin'
 gem 'bcrypt-ruby', :require => 'bcrypt'
-
+gem 'country-select'
+gem 'protected_attributes'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

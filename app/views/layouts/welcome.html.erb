@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HPS</title>
+  <!-- 
+  <link href='http://fonts.googleapis.com/css?family=Pacifico|Dancing+Script|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> 
+  -->
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet' type='text/css'>
+</head>
+<body style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 11px; color: #545454; padding-top: 16px;">
+<style type="text/css">
+a {
+}
+	header{}
+
+	header div h3.logo{
+		font-family: 'Parisienne', cursive;
+		font-weight: bold;
+		display: inline;
+		font-size: 28px;
+	}
+
+header div ul.top_logo {
+    padding: 0px;
+    margin: 0px;
+}
+
+header div ul.top_logo li {
+    display: inline-block;
+    list-style-type: none;
+}
+
+header div ul.top_logo li a{
+	display: block;
+}
+
+header div ul.top_logo li a:hover{}
+/*End of Top Logo*/
+/* Top social*/
+header div ul.top_social{
+	margin: 0px;
+	padding: 0px;
+	margin-top: 10px;
+}
+
+header div ul.top_social li {
+    list-style-type: none;
+    display: inline;
+}
+
+header div ul.top_social li i{
+	font-size: 15px;
+}
+
+header div ul.top_social li a{}
+
+header div ul.top_social li a:hover{}
+</style>
+<header>
+	<div class="container">
+		<h3 class="logo">Hostels Search & Book</h3>
+		<div class="right" style="display: inline;">
+			<ul class="top_logo">
+			    <li><%= link_to :Home, welcome_index_url %></li>
+			    <li>|</li>
+			    <li><a href="">About us</a></li>
+			    <li>|</li>
+			    <li><a href="">Gallery</a></li>
+			    <li>|</li>
+			    <li><a href="">Partners</a></li>
+			    <li>|</li>
+			    <li style="font-weight: bold;">Contact us: </li>
+			    <li><a href="">(+233) 20X XXX XXX</a></li>
+			</ul>
+		  	<ul class="top_social right">
+			    <li style="font-weight: bold;">Connect :</li>
+			    <li><i class="fa fa-facebook-square fa-w" style="color: #0082BE;"></i> Facebook</li>
+			    <li><i class="fa fa-google-plus-square fa-w" style="color: #BA3354;"></i> Google plus</li>
+			    <li><i class="fa fa-youtube-square fa-w" style="color: #FF2B2B;"></i> Youtube</li>
+			    <li><i class="fa fa-pinterest-square fa-w" style="color: #BC262C;"></i> Pinterest</li>
+			</ul>
+		</div>
+	</div>
+</header><!-- End of header -->
+<style type="text/css">
+div ul.navigation {
+    margin: 0px;
+    padding: 0px;
+    border-top: 1px solid #E5E4E4;
+    text-align: center;
+    display: inline-block;
+    border-bottom: 1px solid #E5E4E4;
+    width: 100%;
+}
+
+div ul.navigation li {
+    list-style-type: none;
+    display: inline-block;
+    float: left;
+}
+
+div ul.navigation li a {
+    display: block;
+    padding: 13px 79px;
+    text-decoration: none;
+}
+
+div ul.navigation li a:hover{
+	color: #000;
+}
+
+</style>
+<div class="container">
+	<div style="margin-top:12px;">
+		<ul class="navigation">
+		    <li><%= link_to :Find_hostel, welcome_find_hostel_path %></li>
+		    <li><%= link_to :Hostels, welcome_hostels_path %></li>
+		    <li><%= link_to :Reservation, welcome_reservation_path %></li>
+		    <li><a href="">Location</a></li>
+		    <li><a href="">Experiences</a></li>
+		</ul>
+	</div>
+</div>
+<!-- End of navigation -->
+<!-- Place content here -->
+<div>
+	<%= yield %>
+</div>
+<!-- end of content -->
+<!-- footer -->
+<footer style="color: #D9DCDD; text-align: center; margin-top: 30px;">
+	<div class="container">
+		<hr style="width: 90%; margin: auto;" />
+		<div>
+			<a href="">HPS</a>
+			<a href="">About</a>
+			<a href="">Contact</a>
+			<a href="">Careers</a>
+
+			<a href="">Terms & conditions</a>
+		</div>
+		<div class="container">
+			&copy; 2014 - Hostels Search & Book
+		</div>
+	</div>
+</footer>
+<!-- end of footer -->
+</body>
+</html>

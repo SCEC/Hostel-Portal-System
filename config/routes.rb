@@ -8,6 +8,13 @@ HPS::Application.routes.draw do
   get "welcome/faq"
   get "home/index"
 
+  # new link for welcome page
+  get "welcome/reservation"
+  get "welcome/find_hostel"
+  get "welcome/get_hostel_from_country"
+  get "welcome/find_hostel_from_id"
+
+  get "welcome/hostels"
   # user controller routes
   get "user/new"
   post "user/create"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605153227) do
+ActiveRecord::Schema.define(version: 20140608133611) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -46,31 +46,31 @@ ActiveRecord::Schema.define(version: 20140605153227) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
+  create_table "countries", force: true do |t|
+    t.string "name"
+  end
+
   create_table "facilities", force: true do |t|
     t.string   "facility_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "facilities_hostels", force: true do |t|
+  create_table "facilities_hostels", id: false, force: true do |t|
     t.integer "hostel_id"
     t.integer "facility_id"
   end
 
   add_index "facilities_hostels", ["facility_id", "hostel_id"], name: "index_facilities_hostels_on_facility_id_and_hostel_id"
 
-  create_table "hostel_facilities", force: true do |t|
-    t.integer "facility_id"
-    t.integer "hostel_id"
-  end
-
-  add_index "hostel_facilities", ["facility_id", "hostel_id"], name: "index_hostel_facilities_on_facility_id_and_hostel_id"
-
   create_table "hostels", force: true do |t|
     t.string   "name_of_hostel"
     t.string   "location"
+    t.integer  "country_id"
+    t.string   "city"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
   end
 
   create_table "room_categories", force: true do |t|

@@ -1,0 +1,80 @@
+<div class="container">
+	<h4>Find a Hostel by location or Search hostel on map</h4>
+	
+</div>
+<style type="text/css">
+	.cities{}
+
+.cities .city {
+    float: left;
+    width: 33%;
+    height: 100px;
+}
+</style>
+<div class="container">
+	<ul class="nav nav-tabs" id="myTab">
+	  <li class="active"><a href="#location" data-toggle="tab">Location</a></li>
+	  <li><a href="#map" data-toggle="tab">Map</a></li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane fade in active" id="location" style="border: 1px solid rgb(221, 221, 221); border-width: 0px 0px 1px 0px;">
+			<div class="row" style="padding: 12px;">
+				<div class="col-lg-2">
+					Country: <br/>
+					<%= collection_select nil, :country_id, @countries, :id, :name, {:prompt => "Select Country"}, {:id => 'country_select'} %><br/>
+					<%= collection_select(nil, :hostel_id, @hostels, :id, :name_of_hostel, {:prompt => "Select a Hostel"}, {:id => 'hostel_select'}) %>
+				</div>
+				<div class="col-lg-10">
+					<div class="cities">
+						<div class="city">
+							Kumasi
+						</div>
+						<div class="city">
+							Accra
+						</div>
+						<div class="city">
+							Capecoast
+						</div>
+						<div class="city">
+							Takoradi
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	  <div class="tab-pane fade" id="map">PROFILE</div>
+	</div>
+
+	
+
+</div>
+<script>
+	$(function () {
+		$('#myTab a:first').tab('show');
+	});
+</script>
+<script>
+// $(document).ready(function() {
+	$('#country_select').change(function() {
+		var value = $('#country_select').val();
+
+		$.ajax({
+			url: "http://"+location.host+"welcome/get_hostels_from_country/"+value,
+			data: {
+				country_id : value
+			},
+			dataType: "script"
+		});
+	});
+	$('#artists_select').change(function() {
+		$.ajax({
+			url: "http://"+location.host+"welcome/find_hostel_from_id",
+			data: {
+				artist_id : $('#hostel_select').val()
+			},
+			dataType: "script"
+		});
+	});
+// });
+</script>

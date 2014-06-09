@@ -1,5 +1,6 @@
-class CreateHostels < ActiveRecord::Migration
+class CreateNewHostelTable < ActiveRecord::Migration
   def change
+  	drop_table :hostels
     create_table :hostels do |t|
       t.string 		:name_of_hostel
       t.string 		:location
@@ -9,3 +10,4 @@ class CreateHostels < ActiveRecord::Migration
     end
   end
 end
+

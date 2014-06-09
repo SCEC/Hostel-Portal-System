@@ -15,117 +15,268 @@ p.bjqs-caption {
     border-radius: 0px 5px 5px 0px;
 }
 
+/*BQJS*/
+ul.bjqs-controls.v-centered li.bjqs-prev a ,ul.bjqs-controls.v-centered li.bjqs-next a {
+    color: #FFF;
+    font-size: 15px;
+    background-color: rgba(0,0,0,0.35);
+    padding: 12px;
+}
 
 </style>
-<div class="container-full">
-	<!--  Outer wrapper for presentation only, this can be anything you like -->
-	<div id="banner-fade">
-		<!-- start Basic Jquery Slider -->
-		<ul class="bjqs">
-		  <li><img src="/assets/banner01.jpg" title="Search For Hostels Online"></li>
-		  <li><img src="/assets/banner02.jpg" title="Use Maps to Look for location"></li>
-		  <li><img src="/assets/banner03.jpg" title="Compare and evaluate facilities"></li>
-		</ul>
-		<!-- end Basic jQuery Slider -->
-	</div>
-	<!-- End outer wrapper -->
-</div>
-<div class="container-full" style="background-color: rgba(0, 0, 0, 0.33); position: absolute; height: 761.063px; top: 50px;">
-  <div class="container">
-  	<script class="secret-source">
-        jQuery(document).ready(function($) {
-
-          $('#banner-fade').bjqs({
-            height      : 1080,
-            width       : 1920,
-            responsive  : true,
-            showcontrols : false, // show next and prev controls
-            showmarkers : false, // Show individual slide markers
-            // interaction values
-			keyboardnav : false, // enable keyboard navigation
-			hoverpause : false, // pause the slider on hover
-			
-			animduration : 650, // how fast the animation are
-			animspeed : 6600, // the delay between each slide
-          });
-
-        });
-      </script>
-
-    <div style="margin: 25% auto; width: 220px">
-      <input type="text" class="main-input" placeholder="Search Hostel or Apartment by name"/>
-      <p style="font-size: 20px; text-align: center; color: #000; text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);">Enter a hostel to see details.</p> 
-    </div>
+<div class="container">
+  <!--  Outer wrapper for presentation only, this can be anything you like -->
+  <div id="banner-fade">
+    <!-- start Basic Jquery Slider -->
+    <ul class="bjqs">
+      <li><img src="/assets/banner01.jpg" title="Search For Hostels Online"></li>
+      <li><img src="/assets/banner02.jpg" title="Use Maps to Look for location"></li>
+      <li><img src="/assets/banner03.jpg" title="Compare and evaluate facilities"></li>
+    </ul>
+    <!-- end Basic jQuery Slider -->
   </div>
 </div>
-<div class="container-full" style="background-color: white">
-  <div class="container">
-    <div class="hostels-classes">
-      <div class="hostel">
-        <div class="name">Hostel One</div>
-        <div class="pics"></div>
-        <div class="star"></div>
+  
+	<!-- End outer wrapper -->
+  <script class="secret-source">
+    jQuery(document).ready(function($) {
+
+      $('#banner-fade').bjqs({
+        height      : 800,
+        width       : 1920,
+        responsive  : true,
+        showcontrols : true, // show next and prev controls
+        showmarkers : false, // Show individual slide markers
+        // interaction values
+        keyboardnav : false, // enable keyboard navigation
+        hoverpause : false, // pause the slider on hover
+        
+        animduration : 650, // how fast the animation are
+        animspeed : 6600, // the delay between each slide
+      });
+
+    });
+  </script>
+</div>
+<style type="text/css">
+  form.find_hostel{}
+
+form.find_hostel p:fistChild{}
+
+form.find_hostel p {
+    margin-bottom: 7px;
+}
+
+form.find_hostel p label {
+    display: block;
+    padding: 0px 12px;
+}
+
+form.find_hostel p select {
+    width: 90%;
+    padding: 3px;
+}
+
+  form.find_hostel input[type="submit"]{}
+
+</style>
+<div class="container">
+  <div class="row" style="margin-top: 15px;">
+    <div class="col-lg-3" style="border-right: 1px solid rgb(169, 169, 169);">
+      <div>
+        <fieldset>
+          <legend style="font-size: 14px; border: 0px none; color: #A9A9A9; margin-bottom: 12px;">Find Hostel</legend>
+          <form class="find_hostel">
+            <p>
+              <label>Country: </label>
+              <select disabled="true">
+                <option>Ghana</option>
+              </select>
+            </p>
+            <p>
+              <label>City / State: </label>
+              <select>
+                <option>Kumasi</option>
+                <option>Accra</option>
+              </select>
+            </p>
+            <p>
+              <label>Number of rooms: </label>
+              <select>
+                <option>any</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </p>
+            <input type="submit">
+          </form>
+        </fieldset>
       </div>
-      <div class="hostel">
-        <div class="name">Hostel Two</div>
-        <div class="pics"></div>
-        <div class="star"></div>
-      </div>
-      <div class="hostel">
-        <div class="name">Hostel Three</div>
-        <div class="pics"></div>
-        <div class="star"></div>
-      </div>
-      <div class="hostel">
-        <div class="name">Hostel Four</div>
-        <div class="pics"></div>
-        <div class="star"></div>
-      </div>
-      <div class="hostel">
-        <div class="name">Hostel Four</div>
-        <div class="pics"></div>
-        <div class="star"></div>
-      </div>
-      <div class="hostel">
-        <div class="add">
-          Register or Add your Hostel
+      <p style="font-weight: bold; text-align: center; margin-top: 15px;">
+        SEARCH And Find
+      </p>
+      <p style="text-align: center;">
+        Find any hostel of your choice and make advance payment
+        HPS would handle the transactions and placement adequately.
+        we make sure you and our service providers always get satisfied.
+      </p>
+    </div>
+<style type="text/css">
+  .welcome-top-rated{}
+
+.welcome-top-rated h4 {
+    border-bottom: 1px solid #B9B9B9;
+    font-size: 14px;
+    padding-bottom: 4px;
+    margin-top: 0px;
+    color: #A9B4B1;
+    padding-left: 30px;
+}
+
+.welcome-top-rated .top-rated-new{
+    max-width: 100% !important;
+}
+
+.top-rated-new .bjqs-wrapper {
+    /*width: 100% !important;*/
+}
+
+.welcome-top-rated .top-rated-new img {
+    width: 40% !important;
+    float: left;
+    height: inherit !important;
+}
+
+.welcome-top-rated .top-rated-new .description {
+    width: 58%; 
+    float: right; 
+    display: inline-block;
+}
+.welcome-top-rated .top-rated-new .description .title {
+    font-weight: bold;
+    border-bottom: 1px solid #A4A4A4;
+    width: 80%;
+    padding: 8px 12px;
+    margin-top: 20px;
+}
+
+.welcome-top-rated .top-rated-new ul li{
+  height: 300px !important;
+}
+
+.welcome-top-rated .top-rated-new ul li div div.location i{
+    color: #11AA11;
+    font-size: 19px;
+    text-align: center;
+}
+
+.welcome-top-rated .top-rated-new ul li div div.star {
+    color: #E3CF7A;
+    margin-top: 20px;
+    bottom: 0px;
+    position: absolute;
+    font-size: 20px;
+}
+
+</style>
+    <div class="col-lg-9">
+      <div class="welcome-top-rated">
+        <h4>Top Rated & New</h4>
+        <!--  Outer wrapper for presentation only, this can be anything you like -->
+        <div id="top-rated-new" class="top-rated-new">
+          <!-- start Basic Jquery Slider -->
+          <ul class="bjqs">
+            <li>
+              <img src="/assets/hostel-room1.jpg"/>
+              <div class="description" style="">
+                <p class="title">Glory Land Hostel</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. <b>Vestibulum lacinia arcu eget nulla</b>. Proin ut ligula vel nunc egestas porttitor. <b>Curabitur tortor</b>. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit</i>. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh.
+                </p>
+                <div class="location">
+                  <b>Location: </b>Ayeduase. <i class="fa fa-map-marker"></i>
+                </div>
+                <div class="facilities">
+                  <b>Facilities: </b> Wifi, TV room, Reading Room
+                </div>
+                <div class="star">
+                  <i class="fa fa-star fw star"></i> 
+                  <i class="fa fa-star fw star"></i> 
+                  <i class="fa fa-star fw star"></i> 
+                  <i class="fa fa-star-o fw star"></i> 
+                  <i class="fa fa-star-o fw star"></i>
+                </div>
+              </div>
+            </li>
+            <li>
+              <img src="/assets/hostel-room2.jpg"/>
+              <div class="description" style="">
+                <p class="title">Peace Hostel</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Duis sagittis ipsum. <b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</b>. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. <b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</b>. Aenean quam. In scelerisque sem at dolor. <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit</i>. Proin ut ligula vel nunc egestas porttitor. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh.
+                </p>
+                <div class="location">
+                  <b>Location: </b>Ayeduase. <i class="fa fa-map-marker"></i>
+                </div>
+                <div class="facilities">
+                  <b>Facilities: </b> Wifi, TV room, Reading Room
+                </div>
+                <div class="star">
+                  <i class="fa fa-star fw star"></i> 
+                  <i class="fa fa-star fw star"></i> 
+                  <i class="fa fa-star fw star"></i> 
+                  <i class="fa fa-star-half-o fw star"></i> 
+                  <i class="fa fa-star-o fw star"></i>
+                </div>
+              </div>
+            </li>
+            <li>
+              <img src="/assets/hostel-room3.jpg"/>
+              <div class="description" style="">
+                <p class="title">Ebenezer</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. <b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</b>. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. <b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</b>. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis.
+                </p>
+                <div class="location">
+                  <b>Location: </b>Ayeduase. <i class="fa fa-map-marker"></i>
+                </div>
+                <div class="facilities">
+                  <b>Facilities: </b> Wifi, TV room, Reading Room
+                </div>
+                <div class="star">
+                  <i class="fa fa-star fw star"></i> 
+                  <i class="fa fa-star fw star"></i> 
+                  <i class="fa fa-star-half-o fw star"></i> 
+                  <i class="fa fa-star-o fw star"></i> 
+                  <i class="fa fa-star-o fw star"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <!-- end Basic jQuery Slider -->
         </div>
       </div>
-    </div>
-  </div>
-</div>
-<div style="clear: both"></div>
-<div class="container-full" style="background-color: rgba(0,0,234,0.5); min-height: 62%;">
-  <div class="map">
-    <div style="width: 300px; margin: 12% auto;">
-      <p>Use HPS maps to locate a hostel around you.</p>
-      <div class="button">
-        USE MAPS
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container-full background">
-
-  <div class="row">
-   
-    <div class="col-lg-12 text-center v-center" style="margin-top: 12%;">
-    	<h1 style="color: #FFF;font-weight: bolder;font-size: 80px; font-family: 'Dancing Script', cursive;">Stable Corps</h1>
-      <h1 style="color: #FFF; font-size: 40px;">HPS</h1>
-      <p class="lead" style="font-style: italic;">Welcome to Stable Corps Hostel Placement System</p>
       
     </div>
-    
-  </div> <!-- /row -->
-  
-  <div class="row">
-   
-    <div class="col-lg-12 text-center v-center" style="font-size:39pt;">
-      <a href="#"><i class="icon-google-plus"></i></a> <a href="#"><i class="icon-facebook"></i></a>  <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-github"></i></a> <a href="#"><i class="icon-pinterest"></i></a>
-    </div>
-  
   </div>
-  
-  <br><br><br><br><br>
+</div>
 
-</div> <!-- /container full -->
+<!-- End outer wrapper -->
+<script class="secret-source">
+  jQuery(document).ready(function($) {
+
+    $('#top-rated-new').bjqs({
+      animtype : 'slide', // accepts 'fade' or 'slide'
+      responsive  : true,
+      showcontrols : true, // show next and prev controls
+      showmarkers : false, // Show individual slide markers
+      // interaction values
+      keyboardnav : false, // enable keyboard navigation
+      hoverpause : false, // pause the slider on hover
+      
+      automatic : false, // automatic
+      animduration : 650, // how fast the animation are
+      animspeed : 6600, // the delay between each slide
+    });
+
+  });
+</script>

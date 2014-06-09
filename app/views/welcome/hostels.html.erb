@@ -1,0 +1,63 @@
+<style type="text/css">
+	.country_hostels{
+
+	}
+
+	.country_hostels .country{
+		font-size: 20px;
+	}
+
+.country_hostels .hostels {
+    border-left: 1px solid #DDD;
+}
+
+	.country_hostels .hostels ul.hostel {
+		padding: 0px;
+	}
+
+.country_hostels .hostels ul.hostel li {
+    list-style-type: none;
+    width: 31%;
+    float: left;
+    border: 1px solid #DDD;
+    padding: 5px 7px;
+    margin-top: 13px;
+    margin-left: 13px;
+}
+
+	.country_hostels .hostels ul li div.description {}
+
+.country_hostels .hostels ul li div.name {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+</style>
+<div class="container">
+	<% for country in @countries%>
+	<div class="row country_hostels" >
+		<div class="col-lg-2 country">
+			<%= country.name %>
+		</div>
+		<div class="col-lg-10 hostels">
+			<ul class="hostel">
+			<% for hostel in @hostels %>
+				<% if country.id == hostel.country_id %>
+				<li>
+					<div class="name"><%= hostel.name_of_hostel %></div>
+					<div class="description">
+						<p>City: <%= hostel.city %></p>
+						<p>Location: <%= hostel.location %></p>
+						<% if hostel.description %>
+						<p><%= hostel.description %></p>
+						<% end %>
+					</div>
+				</li>
+				<% end %>
+			<% end %>
+			</ul>
+		</div>
+	</div>
+	<hr style="width: 96%; margin: 20px auto;"/>
+	<% end %>
+</div>
