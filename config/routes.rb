@@ -10,9 +10,14 @@ HPS::Application.routes.draw do
 
   # new link for welcome page
   get "welcome/reservation"
+  post "welcome/reservation"
+  
   get "welcome/find_hostel"
-  get "welcome/get_hostel_from_country"
+  get "welcome/get_hostels_from_country"
+  get "/welcome/get_hostels_from_city_id"
   get "welcome/find_hostel_from_id"
+  get "welcome/get_rooms_within_hostel"
+  get "welcome/get_first_available_room"
 
   get "welcome/hostels"
   # user controller routes

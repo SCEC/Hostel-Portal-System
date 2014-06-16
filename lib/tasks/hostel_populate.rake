@@ -3,48 +3,29 @@ require 'faker'
 namespace :db do
   desc "Fill hostel table with sample data"
   task :populate_hostel => :environment do
-    8.times do |n|
+    4.times do |n|
     	hostelName  = Faker::Address.city + " Hostel"
-    	country = Country.find_by_name :Ghana
-        description = Faker::Lorem.paragraph
+    	city = City.find_by_name :Kumasi
+        description = Faker::Lorem.paragraph(2)
 
         hostel = Hostel.create!(
             :name_of_hostel => hostelName,
-            :country_id     => country.id,
-            :city           => :Kumasi,
-            :location       => :Ayeduase,
+            :city_id        => city.id,
+            :location       => "Ayeduase",
             :description    => description
         )
 
         puts hostel.name_of_hostel + " => Created"
     end
-
-    4.times do |n|
+    3.times do |n|
         hostelName  = Faker::Address.city + " Hostel"
-        country = Country.find_by_name :Ghana
-        description = Faker::Lorem.paragraph
-        
+        city = City.find_by_name :Kumasi
+        description = Faker::Lorem.paragraph(2)
+
         hostel = Hostel.create!(
             :name_of_hostel => hostelName,
-            :country_id     => country.id,
-            :city           => :Kumasi,
-            :location       => :Kotei,
-            :description    => description
-        )
-
-        puts hostel.name_of_hostel + " => Created"
-    end
-
-    4.times do |n|
-        hostelName  = Faker::Address.city + " Hostel"
-        country = Country.find_by_name :Ghana
-        description = Faker::Lorem.paragraph
-        
-        hostel = Hostel.create!(
-            :name_of_hostel => hostelName,
-            :country_id     => country.id,
-            :city           => :Accra,
-            :location       => :Legon,
+            :city_id        => city.id,
+            :location       => "Kotei",
             :description    => description
         )
 
@@ -52,17 +33,16 @@ namespace :db do
     end
     6.times do |n|
         hostelName  = Faker::Address.city + " Hostel"
-        country = Country.find_by_name :Ghana
-        description = Faker::Lorem.paragraph
-        
+        city = City.find_by_name :Accra
+        description = Faker::Lorem.paragraph(2)
+
         hostel = Hostel.create!(
             :name_of_hostel => hostelName,
-            :country_id     => country.id,
-            :city           => :Accra,
-            :location       => :East_Legon,
+            :city_id        => city.id,
+            :location       => "Legon",
             :description    => description
         )
-        
+
         puts hostel.name_of_hostel + " => Created"
     end
   end

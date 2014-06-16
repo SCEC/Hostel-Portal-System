@@ -98,32 +98,7 @@
 	    <div class="col-lg-2" style="padding-right: 0px;"></div>
     	<div class="col-lg-10">
     		<div class="reservation-form">
-	    		<fieldset>
-	    			<legend>Reservation</legend>
-	    			<label>Hostel</label>
-	    			<select>
-	    				<option>Name of Hostel</option>
-	    			</select><br/>
-	    			<label>Location:</label>
-	    			<input type="text" disabled="true" value="Ayeduase"><br/>
-	    			<label>Number of Room(s):</label>
-	    			<select>
-	    				<option>1</option>
-	    				<option>2</option>
-	    				<option>3</option>
-	    				<option>4</option>
-	    			</select><br/>
-	    			<label>Current Residence/Institution:</label>
-	    			<input type="text" placeholder="Current Residence / Institution">
-	    		</fieldset>
-	    		<fieldset>
-	    			<legend>Personal Details</legend>
-	    			<label>Firstname: </label> <input type="text"><br/>
-	    			<label>Lastname: </label> <input type="text"><br/>
-	    			<label>Contact No: </label> <input type="text"><br/>
-	    			<label>Email: </label> <input type="text"><br/>
-	    			<input type="submit">
-	    		</fieldset>
+    			<%= render :partial => "shared/hostels/user_reservation_forms" %>
 	    	</div>
     	</div>
     </div>

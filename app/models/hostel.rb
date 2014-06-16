@@ -1,9 +1,9 @@
 class Hostel < ActiveRecord::Base
-	belongs_to :country
+	belongs_to :city
 
 	has_and_belongs_to_many :facilities, join_table: 'facilities_hostels'
 	attr_accessible :facility_ids, 
-					:city, 
+					:city_id, 
 					:name_of_hostel, 
 					:location,
 					:description,
@@ -14,4 +14,8 @@ class Hostel < ActiveRecord::Base
 	# attr_accessible :facility_ids
 	# has_and_belongs_to_many :facilities
 	accepts_nested_attributes_for :facilities, :allow_destroy => true
+
+	def to_s
+		return self.name_of_hostel
+	end
 end

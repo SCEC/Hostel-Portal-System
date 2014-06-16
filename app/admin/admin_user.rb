@@ -1,6 +1,6 @@
 ActiveAdmin.register AdminUser do
   permit_params :email, :password, :password_confirmation
-
+  
   index do
     selectable_column
     id_column
@@ -39,9 +39,9 @@ end
 ActiveAdmin.register RoomCategory do
   menu :parent => "Hostel"
 end
-ActiveAdmin.register RoomType do
-  menu :parent => "Hostel"
-end
+# ActiveAdmin.register RoomType do
+#   menu :parent => "Hostel"
+# end
 
 
 

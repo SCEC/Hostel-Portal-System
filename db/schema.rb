@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608133611) do
+ActiveRecord::Schema.define(version: 20140614171407) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -24,9 +27,9 @@ ActiveRecord::Schema.define(version: 20140608133611) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -43,8 +46,13 @@ ActiveRecord::Schema.define(version: 20140608133611) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "cities", force: true do |t|
+    t.string  "name"
+    t.integer "country_id"
+  end
 
   create_table "countries", force: true do |t|
     t.string "name"
@@ -61,22 +69,34 @@ ActiveRecord::Schema.define(version: 20140608133611) do
     t.integer "facility_id"
   end
 
-  add_index "facilities_hostels", ["facility_id", "hostel_id"], name: "index_facilities_hostels_on_facility_id_and_hostel_id"
+  add_index "facilities_hostels", ["facility_id", "hostel_id"], name: "index_facilities_hostels_on_facility_id_and_hostel_id", using: :btree
 
   create_table "hostels", force: true do |t|
     t.string   "name_of_hostel"
+    t.integer  "city_id"
     t.string   "location"
-    t.integer  "country_id"
-    t.string   "city"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
+  end
+
+  create_table "number_types", force: true do |t|
+    t.integer "number"
   end
 
   create_table "room_categories", force: true do |t|
     t.string   "room_setting"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "room_in_hostels", force: true do |t|
+    t.integer  "hostel_id"
+    t.integer  "number_type_id"
+    t.integer  "beds_remaining"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "price"
   end
 
   create_table "room_types", force: true do |t|

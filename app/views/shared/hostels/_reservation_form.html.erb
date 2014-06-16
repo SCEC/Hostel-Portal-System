@@ -1,0 +1,191 @@
+<fieldset>
+	<legend>Reservation</legend>
+	<label>Country</label>
+	<select disabled="true">
+		<option>Ghana</option>
+	</select>
+	<label>City/Town</label>
+	<%= collection_select nil, :city_id, City.all, :id, :name, {:prompt => "Select City"}, {:id => 'location_select'} %>
+	<label>Hostel</label>
+	<%= collection_select nil, :city_id, Hostel.all, :id, :name_of_hostel, {:prompt => "Select Hostel"}, {:id => 'hostel_select'} %>
+	<label>Location:</label>
+	<input type="text" disabled="true" value="No hostel selected" id="location_input"><br/>
+	<label>Number of bed(s) {room type}:</label>
+	<select id="room_type_select">
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+	</select><br/>
+
+
+	<label>
+		Bed availability:
+	</label>
+	<input type="text" id="result" disabled="true" value="4"><br/>
+	<div id="radio_button_select" style="padding: 7px; border-radius: 2px; border: 1px solid #DDD; margin:8px 0px;">
+		
+	</div>
+	<div>
+		<input type="text" placeholder="Enter quantity.">
+	</div>
+	<textarea id="result" disabled=""></textarea><br/>
+	
+</fieldset>
+<script>
+function checkLocationSelectBox(){
+	var value = $('select#location_select').val();
+
+	if (value==""){
+		// if the id is empty remove all the sub_selection options from being selectable and do not do any ajax
+        var hostelRow = "<option>Choose Town or City</option>";
+        $("select#hostel_select").prop("disabled", "disabled");
+		$("select#hostel_select option").remove();
+        $(hostelRow).appendTo("select#hostel_select");
+
+        return;
+
+	} else{
+		// Send the request and update sub category dropdown
+        $.ajax({
+            dataType: "json",
+            cache: false,
+            url: '/welcome/get_hostels_from_city_id',
+            data: { id : value},
+            timeout: 3000,
+            beforeSend: function(){
+            	if ( console && console.log ) {
+        			$("select#hostel_select").prop("disabled", "disabled");
+				}
+            },
+            error: function(XMLHttpRequest, errorTextStatus, error){
+                alert("Failed to load data : "+ errorTextStatus+" ;"+error);
+            },
+            success: function(data){                    
+	            $("select#hostel_select option").remove();
+	            $("div.cities div").remove();
+
+                //put in a empty default line
+                var hostelRow = "<option>Choose Hostel</option>";
+                $(hostelRow).appendTo("select#hostel_select");
+
+                var hostels = data.hostels;
+
+                $.each(hostels, function(i, j){
+                	hostelRow = "<option value=\"" + j.id + "\">" + j.name_of_hostel + "</option>";
+                    $(hostelRow).appendTo("select#hostel_select");
+                    var div = 	"<div class='hostel'>" +
+                    			"<p class='name'>" + j.name_of_hostel + "</p>" +
+                				"<p class='country'>" + j.description + "</p>"+
+                				"</div>";
+                	$(div).appendTo("div.cities");
+                });         
+            },
+            complete: function(){
+            	if ( console && console.log ) {
+	            	$("select#hostel_select").prop("disabled", false);
+				}
+            }
+        });
+	}
+};
+
+function getRoomsAtHostel () {
+	// body...
+	var value = $('select#hostel_select').val();
+	if (value==""){
+		// if the id is empty remove all the sub_selection options from being selectable and do not do any ajax
+        var hostelRow = "<option>Choose Town or City</option>";
+        $("input#location_input").val("No hostel selected");
+
+        return;
+
+	} else{
+		// Send the request and update sub category dropdown
+        $.ajax({
+            dataType: "json",
+            cache: false,
+            url: '/welcome/get_rooms_within_hostel',
+            data: { id : value},
+            timeout: 3000,
+            beforeSend: function(){
+            	if ( console && console.log ) {
+				}
+            },
+            error: function(XMLHttpRequest, errorTextStatus, error){
+                alert("Failed to load data : "+ errorTextStatus+" ;"+error);
+            },
+            success: function(data){       
+            	var location = data.location;  
+            	var room_person_size = data.room_person_size;
+            	var total_number_of_rooms_available = data.total_number_of_rooms_available;
+
+	            $("input#location_input").val(location);   
+            },
+            complete: function(){
+            	if ( console && console.log ) {
+				}
+            }
+        });
+	}
+};
+
+function checkRoomAvailability () {
+	var hostel_id = $('select#hostel_select').val();
+	var number_id = $('select#room_type_select').val();
+
+	if (hostel_id=="" || number_id==""){
+		// if the id is empty remove all the sub_selection options from being selectable and do not do any ajax
+        alert ("no value");
+        return;
+	} else{
+		// Send the request and update sub category dropdown
+        $.ajax({
+            dataType: "json",
+            cache: false,
+            url: '/welcome/get_first_available_room',
+            data: { 
+            	hostel_id 		: hostel_id,
+            	number_type_id	: number_id
+            },
+            timeout: 3000,
+            beforeSend: function(){
+            	$('#radio_button_select div').remove()
+            	if ( console && console.log ) {
+				}
+            },
+            error: function(XMLHttpRequest, errorTextStatus, error){
+                alert("Failed to load data : "+ errorTextStatus+" ;"+error);
+            },
+            success: function(data){
+
+            	if (data.response == true){
+	            	var rooms = data.rooms;
+	            	$('<div>Select room</div>').appendTo("#radio_button_select");
+	            	$.each(rooms, function(i, j){
+
+	            		var radioInput = '<div id="radio_button_input"><input type="radio" name="choose_room" value="' + 
+	            							j.id +
+	            							'" /> Room with ' + j.beds_remaining + ' remaining bed(s). @'+ j.price+'GHS per bed.</div>';
+
+	            		$(radioInput).appendTo("#radio_button_select");
+	                });
+	            } else {
+	            	var values = '<div>No rooms available for this unit</div>';
+            		$(values).appendTo("#radio_button_select");
+            	}
+            },
+            complete: function(){
+            	if ( console && console.log ) {
+				}
+            }
+        });
+	}
+}
+
+$('select#location_select').change(checkLocationSelectBox);
+
+$('select#hostel_select').change(getRoomsAtHostel);
+
+$('select#room_type_select').change(checkRoomAvailability);
+</script>

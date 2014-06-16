@@ -10,6 +10,12 @@
     width: 33%;
     height: 100px;
 }
+
+select#hostel_select, select#location_select, select#country_select {
+    width: 98%;
+    margin: 2px 0px;
+    padding: 5px 3px;
+}
 </style>
 <div class="container">
 	<ul class="nav nav-tabs" id="myTab">
@@ -22,11 +28,38 @@
 			<div class="row" style="padding: 12px;">
 				<div class="col-lg-2">
 					Country: <br/>
-					<%= collection_select nil, :country_id, @countries, :id, :name, {:prompt => "Select Country"}, {:id => 'country_select'} %><br/>
-					<select id="hostel_select">
-						<option>Choose country from above</option>
-					</select>
+					<%= collection_select nil, :country_id, Country.all, :id, :name, {:prompt => "Select Country"}, {:id => 'country_select'} %><br/>
+					<div class="locations_div">
+						<select id="location_select" disabled="disabled">
+							<option>Choose country from above</option>
+						</select>
+					</div>
+					<div class="hostels_div">						
+						<select id="hostel_select" disabled="disabled">
+							<option>Choose country from above</option>
+						</select>
+					</div>
 				</div>
+				<style type="text/css">
+div.cities .hostel {
+    width: 32%;
+    float: left;
+    padding: 7px;
+    box-shadow: 1px 1px 1px #DDD;
+    border-radius: 2px;
+    margin: 3px;
+    border: 1px solid #DDD;
+}
+
+div.cities .hostel p.name{}
+
+div.cities .hostel p.country{}
+
+div.cities .hostel p.town{}
+
+div.cities .hostel p.desc{}
+
+				</style>
 				<div class="col-lg-10">
 					<div class="cities">
 						<div class="city">
@@ -64,54 +97,126 @@
 
 		if (value==""){
 			// if the id is empty remove all the sub_selection options from being selectable and do not do any ajax
+
             $("select#hostel_select option").remove();
-            var row = "<option value=\"" + "" + "\">" + "Choose a country from above" + "</option>";
-            $(row).appendTo("select#hostel_select");
+            $("select#location_select option").remove();
+            $("select#hostel_select").prop('disabled', 'disabled');
+            $("select#location_select").prop('disabled', 'disabled');
+
 		}else{
 			// Send the request and update sub category dropdown
             $.ajax({
                 dataType: "json",
                 cache: false,
-                url: '/welcome/get_hostel_from_country/',
+                url: '/welcome/get_hostels_from_country/',
                 data: { id : value},
                 timeout: 3000,
                 beforeSend: function(){
                 	if ( console && console.log ) {
-						console.log("Message", "Disable hostel_select");
+			            $("select#hostel_select").prop('disabled', 'disabled');
+			            $("select#location_select").prop('disabled', 'disabled');
 					}
                 },
                 error: function(XMLHttpRequest, errorTextStatus, error){
                     alert("Failed to load data : "+ errorTextStatus+" ;"+error);
                 },
                 success: function(data){                    
-                    // Clear all options from sub category select
-                    $("select#hostel_select option").remove();
+		            $("select#hostel_select option").remove();
+		            $("select#location_select option").remove();
+                   	$("div.cities div").remove();
+
                     //put in a empty default line
-                    var row = "<option value=\"" + "" + "\">" + "Select a Hostel" + "</option>";
-                    $(row).appendTo("select#hostel_select");                        
-                    // Fill sub category select
-                    $.each(data, function(i, j){
-                        row = "<option value=\"" + j.id + "\">" + value + " " + j.name_of_hostel + "</option>";  
-                        $(row).appendTo("select#hostel_select");                    
-                    });            
+                    var locationRow = "<option>Choose City/Town</option>";
+                    $(locationRow).appendTo("select#location_select");
+
+                    var cities = data.cities;
+                    var hostels = data.hostels;
+
+                    $.each(cities, function(i, j){
+	                 	locationRow = "<option value=\"" + j.id + "\">" + j.name + "</option>";
+	                    $(locationRow).appendTo("select#location_select");
+                    });
+
+                    $.each(hostels, function(i, j){
+                    	row = "<option value=\"" + j.id + "\">" + j.name_of_hostel + "</option>";
+                    	var div = 	"<div class='hostel'>" +
+                        			"<p class='name'>" + j.name_of_hostel + "</p>" +
+                    				"<p class='country'>" + j.description + "</p>"+
+                    				"</div>";
+                    	$(div).appendTo("div.cities");
+                        $(row).appendTo("select#hostel_select");
+                    });         
                 },
                 complete: function(){
                 	if ( console && console.log ) {
-						console.log("Message", "Enable hostel_select");
+		            	$("select#location_select").prop('disabled', false);
 					}
                 }
             });
 		}
-		// $.ajax({
-		// 	url: "http://"+location.host+"welcome/get_hostels_from_country/"+value,
-		// 	data: {
-		// 		country_id : value
-		// 	},
-		// 	dataType: "script"
-		// });
-	}
+	};
+
+	function checkLocationSelectBox(){
+		var value = $('select#location_select').val();
+
+		console.log("Message", value);
+		if (value==""){
+			// if the id is empty remove all the sub_selection options from being selectable and do not do any ajax
+            var hostelRow = "<option>Choose Hostel</option>";
+            $("select#hostel_select").prop("disabled", "disabled");
+			$("select#hostel_select option").remove();
+            $(hostelRow).appendTo("select#hostel_select");
+
+            return;
+
+		}else{
+			// Send the request and update sub category dropdown
+            $.ajax({
+                dataType: "json",
+                cache: false,
+                url: '/welcome/get_hostels_from_city_id',
+                data: { id : value},
+                timeout: 3000,
+                beforeSend: function(){
+                	if ( console && console.log ) {
+            			$("select#hostel_select").prop("disabled", "disabled");
+					}
+                },
+                error: function(XMLHttpRequest, errorTextStatus, error){
+                    alert("Failed to load data : "+ errorTextStatus+" ;"+error);
+                },
+                success: function(data){                    
+		            $("select#hostel_select option").remove();
+		            $("div.cities div").remove();
+
+                    //put in a empty default line
+                    var hostelRow = "<option>Choose Hostel</option>";
+                    $(hostelRow).appendTo("select#hostel_select");
+
+                    var hostels = data.hostels;
+
+                    $.each(hostels, function(i, j){
+                    	hostelRow = "<option value=\"" + j.id + "\">" + j.name_of_hostel + "</option>";
+                        $(hostelRow).appendTo("select#hostel_select");
+                        var div = 	"<div class='hostel'>" +
+                        			"<p class='name'>" + j.name_of_hostel + "</p>" +
+                    				"<p class='country'>" + j.description + "</p>"+
+                    				"</div>";
+                    	$(div).appendTo("div.cities");
+                    });         
+                },
+                complete: function(){
+                	if ( console && console.log ) {
+		            	$("select#hostel_select").prop("disabled", false);
+					}
+                }
+            });
+		}
+	};
 
 	$('#country_select').change(checkCountrySelectBox);
+
+	$('#location_select').change(checkLocationSelectBox);
 
 	$('#artists_select').change(function() {
 		$.ajax({
@@ -122,5 +227,4 @@
 			dataType: "script"
 		});
 	});
-// });
 </script>

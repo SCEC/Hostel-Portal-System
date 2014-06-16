@@ -3,15 +3,16 @@ ActiveAdmin.register Hostel do
   # filter :facilities_id, :as => :check_boxes, :collection => proc {Facility.all}
   permit_params :name_of_hostel, 
                 :location, 
-                :country_id, 
-                :city, 
+                :city_id,
                 :description,
                 facility_ids: []
                 
   form do |f|
     f.inputs
     f.inputs "Add Facility" do
-      f.input :facilities, as: :check_boxes, collection: Facility.all
+      f.input :facilities, 
+              :label => "Facilities available",
+              as: :check_boxes, collection: Facility.all
     end
 
     f.actions

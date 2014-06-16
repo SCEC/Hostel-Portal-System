@@ -1,10 +1,11 @@
-ActiveAdmin.register RoomType do
+ActiveAdmin.register City do
 
-  
+  permit_params :name,
+                :country_id
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :number
+  # permit_params :list, :of, :attributes, :on, :model
   #
   # or
   #
