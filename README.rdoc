@@ -1,12 +1,23 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The hostel placement system 
+developed for Stable Corps 
+
+Description:
+	The Stable corps system is supposed to help visitors
+to acquire their hostels facilities using the most easy to 
+use platform.
+
+The system incorporates features which enable one to search, locate and 
+make room reservation for students.
+
+
+== Running the system.
 
 Things you may want to cover:
 
 * Ruby version
-
+	The ruby version used for the current version
 * System dependencies
 
 * Configuration
