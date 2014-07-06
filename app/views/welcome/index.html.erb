@@ -24,19 +24,133 @@ ul.bjqs-controls.v-centered li.bjqs-prev a ,ul.bjqs-controls.v-centered li.bjqs-
 }
 
 </style>
-<div class="container">
-  <!--  Outer wrapper for presentation only, this can be anything you like -->
-  <div id="banner-fade">
-    <!-- start Basic Jquery Slider -->
-    <ul class="bjqs">
-      <li><img src="/assets/banner01.jpg" title="Search For Hostels Online"></li>
-      <li><img src="/assets/banner02.jpg" title="Use Maps to Look for location"></li>
-      <li><img src="/assets/banner03.jpg" title="Compare and evaluate facilities"></li>
-    </ul>
-    <!-- end Basic jQuery Slider -->
-  </div>
+
+
+<div id="map1" style="float:left;width: 930px; height: 600px;box-shadow:8px 10px 10px rgba(0,0,0,0.5),inset 8px 10px 10px rgba(255,255,255,0.75);"></div>
+ <div id="text" style="float:right; width: 355px; height: 105px;font-size:10pt;padding:0; -webkit-box-shadow:0 1px 5px #0061aa,inset 0 10px 20px #b6f9ff;-moz-box-shadow:0 1px 5px #0061aa,inset 0 10px 20px #b6f9ff;box-shadow:0 8px 5px #0061aa,inset 0 10px 20px #b6f9ff;background: #6fb2e5;">
+<p>Click Hostel to display more info, </p>
+<p>Drag on the map to widen view ,Scroll on the map or click the zoom buttons(upper left corner) to zoom </p>
 </div>
+</div>
+<div id="image" style ="width:355px; height: 480px; border:1px solid black; float:right; margin-top:18px;-webkit-box-shadow:0 1px 5px #0061aa,
+inset 0 10px 20px #b6f9ff;-moz-box-shadow:0 1px 5px #0061aa,inset 0 10px 20px #b6f9ff;box-shadow:0 1px 5px #0061aa,inset 0 10px 20px #b6f9ff;cursor: move;background-image: url(/assets/sculpteur.jpg)" ></div>
+
+<script>
+var markers = [
+    {coords: [287, 260], name: "No weapon Hostel ", fascilities : "Wifi,Generator,Tv Room,Reading Room", location: "Ayeduase", image:"noweapon.jpg", dist:"10km"},
+    {coords: [290, 280], name: "Franco Hostel (Old)", fascilities : "Wifi,Generator, Tv Room,Reading Room" , location:"Ayeduase", image:"francoold.jpg",dist:"10km" },
+    {coords: [360, 310], name: "Ebenezer Hostel ", fascilities : "Wifi,Generator,Reading Room", location: "Ayeduase", image:"ebenezer.jpg",dist:"10km"},
+   {coords: [340, 310], name: "Orazen Hostel", fascilities : "Generator,Tv Room,Reading Room", location: "Ayeduase", image:"orazen.jpg",dist:"10km"},
+{coords: [300, 285], name: "Franco Hostel (New) ", fascilities : "Wifi,Generator,Tv Room,Reading Room", location: "Ayeduase", image:"franconew.jpg",dist:"10km"},
+{coords: [350, 300], name: "Jalex Hostel ", fascilities : "Wifi,Generator,Tv Room,Reading Room", location: "Ayeduase", image:"jalex.jpg",dist:"10km"},
+{coords: [340, 320], name: "Shalom Hostel ", fascilities : "Wifi,Tv Room,Reading Room", location: "Ayeduase", image:"shalom.jpg",dist:"10km"},
+{coords: [250, 286], name: "Frontline Hostel", fascilities : "Wifi,Generator,Tv Room,Reading Room", location: "Ayeduase", image:"frontline.jpg",dist:"10km"},
+{coords: [380, 350], name: "will know Hostel ", fascilities : "Wifi,Generator,Tv Room,Reading Room", location: "Ayeduase", image:"willknow.jpg",dist:"10km"},
+{coords: [385, 360], name: "Long island Hostel ", fascilities : "Wifi,Generator,Tv Room,Reading Room", location: "Ayeduase", image:"longisland.jpg",dist:"10km"},
+{coords: [390, 375], name: "Mass Hostel ", fascilities : "Wifi,Generator,Tv Room,Reading Room", location: "Ayeduase", image:"masshostel.jpg",dist:"10km"},
+{coords: [287, 500], name: "kotei Hostel ", fascilities : "Wifi,Generator,Tv Room,Reading Room", location: "Kotei", image:"masshostel.jpg",dist:"10km"},
+];
+    $(function(){
+
+      var map = $('#map1').vectorMap({
+        map: 'map',
+       
+       regionsSelectable:true,
+  hoverColor: false,
+        hoverOpacity: 0.5,
+        zoomOnScroll: true,
+   series: {
+      regions: [{
+        values: {
+          id660: 'KNUST',
+     id1104:'KNUST',
+    id629:'KNUST',
+    id198:'KNUST',
+         
+    },
+  scale: {
+          "KNUST": "#2791ad",
+          
+        }
+      }]
+    },
+
+        zoomMax:8,
+        zoomMin:2,
+         markerStyle: {
+                    initial: {
+                          fill: '#F8E23B',
+                          stroke: '#383f47',
+      
+                          r: 7
+                    }
+                  },
+           
+markers:markers,
+
+  onMarkerClick: function (event, index) {
+var display= "Name of Hostel: " +(markers[index].name)  +".\n\n"+"Location: " +(markers[index].location)+ ".\nFacilities: "+ (markers[index].fascilities)+ ".\nDistance from campus:" + (markers[index].dist);
+ $('#text').text(display);
+ $('#image').text("panorama view of "+(markers[index].name) +" here");
+ var hostelimage = "url(/assets/"+(markers[index].image)+ ")";
+  $('#image').css('background-image',hostelimage);
+
+           
+         
+            },
+
+    onRegionClick:function( e, code)  {
   
+
+     map.setFocus(code);
+        focusOn.scale = 5;
+                                },         
+  focusOn:
+    {
+  x: 0.2,
+  y: 0.5,
+  scale: 1.5
+},  
+zoomStep:1.1,
+        regionStyle: {
+            initial: {
+                fill: '#ccc',
+                "fill-opacity": 1,
+                stroke: '#444444',
+                "stroke-width": 1,
+                "stroke-opacity": 0.7
+            },
+            hover: {
+                "fill-opacity": 0.8,
+                fill: '#A0D1DD'
+            }
+        },
+ onRegionOver: function(event, code){ 
+    if(code =='id660')
+label.text("Kwame Nkrumah University of Science And Technology");
+else{
+label.text="";
+}
+},
+        onLabelShow: function(event,label, code){
+             if(code =='id660')
+      label.text("Kwame Nkrumah University of Science And Technology");
+    }
+  
+      
+      });
+
+    })
+  </script>
+ 
+
+
+
+
+
+
+
+
 	<!-- End outer wrapper -->
   <script class="secret-source">
     jQuery(document).ready(function($) {
@@ -81,7 +195,7 @@ form.find_hostel p select {
 
 </style>
 <div class="container">
-  <div class="row" style="margin-top: 15px;">
+  <div class="row" style="margin-top: 20px;">
     <div class="col-lg-3" style="border-right: 1px solid rgb(169, 169, 169);">
       <div>
         <fieldset>
@@ -159,7 +273,7 @@ form.find_hostel p select {
     border-bottom: 1px solid #A4A4A4;
     width: 80%;
     padding: 8px 12px;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .welcome-top-rated .top-rated-new ul li{
@@ -174,7 +288,7 @@ form.find_hostel p select {
 
 .welcome-top-rated .top-rated-new ul li div div.star {
     color: #E3CF7A;
-    margin-top: 20px;
+    margin-top: 30px;
     bottom: 0px;
     position: absolute;
     font-size: 20px;

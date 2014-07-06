@@ -9,8 +9,36 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require jquery-jvectormap
+//= require jquery-mousewheel
+//= require lib/jvectormap
+//= require lib/abstract-element
+//= require lib/abstract-canvas-element
+//= require  lib/abstract-shape-element
+
+//= require lib/svg-element
+//= require  lib/svg-group-element
+//= require  lib/svg-canvas-element
+//= require  lib/svg-shape-element
+//= require lib/svg-path-element
+//= require lib/svg-circle-element
+//= require lib/vml-element
+//= require lib/vml-group-element
+//= require  lib/vml-canvas-element
+//= require  lib/vml-shape-element
+//= require  lib/vml-path-element
+//= require  lib/vml-circle-element
+//= require  lib/vector-canvas
+//= require  lib/simple-scale
+//= require  lib/numeric-scale
+//= require  lib/ordinal-scale
+//= require  lib/color-scale
+//= require  lib/data-series
+//= require  lib/proj
+//= require  lib/world-map
+//= require_tree .  
+
